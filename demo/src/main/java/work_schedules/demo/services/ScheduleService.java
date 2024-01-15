@@ -26,8 +26,12 @@ public class ScheduleService {
     public Schedule saveSchedule(ScheduleDto scheduleDTO) {
         Schedule schedule = new Schedule();
         User user = userRepo.findById(scheduleDTO.getUserId()).get();
-        // logger.info("Log message: {}", scheduleDTO.getUserId());
+        logger.info("Log message: {}", schedule);
         schedule.setUser(user);
+        schedule.setStartDate(scheduleDTO.getStartDate());
+        schedule.setEndDate(scheduleDTO.getEndDate());
+        schedule.setShift(scheduleDTO.getShift());
+        schedule.setNotes(scheduleDTO.getNotes());
         scheduleRepo.save(schedule);
         return schedule;
     }
